@@ -62,13 +62,13 @@ def get_follower_tweets():
 			accountvar = 'dog_feelings'
 			while count <= TOTAL_TWEETS:
 				for status in limit_handled(tweepy.Cursor(api.user_timeline,
-					screen_name=accountvar,count=NUM_TWEETS).items()):				
+					screen_name=accountvar,count=NUM_TWEETS,tweet_mode="extended").items()):				
 					stat = ""
 					try:
 						if status.retweeted_status:
 							stat = status.retweeted_status.full_text
 					except:
-						stat = status.text
+						stat = status.full_text
 					e_str = emoji.emojize(stat)
 					filtered_string = re.sub(r"http\S+", "", e_str)
 					eng_tweet = re.sub(r"@", "", filtered_string)
