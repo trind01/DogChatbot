@@ -1,0 +1,35 @@
+To run in a virtualenv:
+pip install virtualenv
+virtualenv venv
+
+Linux:
+source venv/bin/activate
+
+Windows:
+.\venv\Scripts\activate
+
+To get the packages:
+pip install -r requirements.txt
+
+In order to collect tweets you need a developer account on twitter.
+Once you set that up make a file key.py and put in it:
+consumer_key = 'your public key' 
+consumer_secret = 'your private key'
+access_token = 'your public access token'
+access_secret = 'your private access token'
+
+To run:
+python bot.py
+
+To use recently pulled data in bot.py change:
+USED_SET = CURRENT_SET
+
+To use all data accumulated in bot.py change:
+USED_SET=ALL_DATA
+
+To not run the bot bot.py change:
+RUN_BOT = False
+
+To not run Tweet collection in bot.py change:
+COLLECT_DATA = False
+
