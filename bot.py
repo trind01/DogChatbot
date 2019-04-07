@@ -16,7 +16,7 @@ import emoji
 
 SLEEPTIME = 60*15
 NUM_TWEETS = 50
-TOTAL_TWEETS = 5000
+TOTAL_TWEETS = 1000
 ALL_DATA = '.\\cachedData\\OldSet.txt'
 CURRENT_SET = '.\\cachedData\\currentSet.txt'
 USED_SET = ALL_DATA
@@ -51,6 +51,8 @@ def limit_handled(cursor):
 			continue
 		except tweepy.TweepError:
 			print("TWEEP ERROR")
+			# print("RATE ERROR 15 Minute Break")
+			# time.sleep(SLEEPTIME)
 			break
 		except StopIteration:
 			break
@@ -73,6 +75,8 @@ def get_follower_tweets():
 					filtered_string = re.sub(r"http\S+", "", e_str)
 					eng_tweet = re.sub(r"@", "", filtered_string)
 					eng_tweet = re.sub(r"#", "", eng_tweet)
+					eng_tweet = re.sub("\.", "", eng_tweet)
+					eng_tweet = eng_tweet + "."
 					try:
 						if len(eng_tweet.split()) > 5:
 							if detect(eng_tweet) == 'en':
@@ -81,6 +85,7 @@ def get_follower_tweets():
 					except lang_detect_exception.LangDetectException:
 						continue
 				count += NUM_TWEETS
+				print("Tweets Collected = " + str(count))
 	# os.startfile('test.htm')
 
 def LemTokens(tokens):
