@@ -4,7 +4,7 @@ emoji==0.5.2
 idna==2.8
 langdetect==1.0.7
 nltk==3.4
-numpy==1.16.2
+numpy==1.22.0
 oauthlib==3.0.1
 PySocks==1.6.8
 requests==2.21.0
